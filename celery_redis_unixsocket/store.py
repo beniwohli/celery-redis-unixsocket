@@ -10,7 +10,6 @@ class RedisUnixSocketBackend(RedisBackend):
     @cached_property
     def client(self):
         if self.host.startswith('/'):
-            print "SOCKET from store"
             pool = self.redis.ConnectionPool(
                 connection_class=self.redis.UnixDomainSocketConnection,
                 path=self.host,
