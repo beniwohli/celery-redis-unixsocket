@@ -3,6 +3,7 @@
 from kombu.transport import redis as kombu_redis
 import redis
 
+
 class Channel(kombu_redis.Channel):
 
     def _create_client(self):
@@ -23,6 +24,7 @@ class Channel(kombu_redis.Channel):
                 connection_class=redis.UnixDomainSocketConnection,
                 path=conninfo.hostname,
                 db=database,
+                password=conninfo.password,
             )
         else:
             pool = None
@@ -34,6 +36,7 @@ class Channel(kombu_redis.Channel):
             password=conninfo.password,
             connection_pool=pool,
         )
+
 
 class Transport(kombu_redis.Transport):
     Channel = Channel

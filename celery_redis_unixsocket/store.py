@@ -13,6 +13,7 @@ class RedisUnixSocketBackend(RedisBackend):
                 connection_class=self.redis.UnixDomainSocketConnection,
                 path=self.host,
                 db=self.db,
+                password=self.password,
             )
             return self.redis.Redis(connection_pool=pool)
         else:
