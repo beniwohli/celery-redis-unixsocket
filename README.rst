@@ -14,12 +14,18 @@ Add this to your settings::
     BROKER_HOST = '/path/to/redis.sock'
     BROKER_VHOST = 0
 
+    # if redis password is configured:
+    BROKER_PASSWORD = 'foobar'
+
 And if you want to store results::
 
     CELERY_RESULT_BACKEND = 'redisunixsocket'
     CELERY_REDIS_HOST = '/path/to/redis.sock'
 
     CELERY_IGNORE_RESULT = False
+
+    # if redis password is configured:
+    CELERY_REDIS_PASSWORD = 'foobar'
 
     import celery_redis_unixsocket
 
